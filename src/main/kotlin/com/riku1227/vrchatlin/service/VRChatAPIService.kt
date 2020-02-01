@@ -97,4 +97,42 @@ interface VRChatAPIService {
 
     @DELETE("1/favorites/{favorite_id}")
     fun deleteFavorite(@Path("favorite_id") favorite_id: String): Completable
+
+    /*
+    * ----------
+    * World API
+    *   | World
+    * ----------
+    *  */
+
+    @GET("1/worlds/{world_id}")
+    fun getWorldByID(@Path("world_id") world_id: String): Single<VRChatWorld>
+
+    @GET("1/worlds")
+    fun getWorldList(@Query("featured") featured: Boolean? = null, @Query("sort") sort: String? = null,
+                     @Query("user") user: String? = null, @Query("userId") userId: String? = null,
+                     @Query("n") n: Int? = null, @Query("order") order: String? = null, @Query("offset") offset: Int? = null,
+                     @Query("search") search: String? = null, @Query("tag") tag: String? = null, @Query("notag") notag: String? = null,
+                     @Query("releaseStatus") releaseStatus: String? = null,
+                     @Query("maxUnityVersion") maxUnityVersion: String? = null, @Query("minUnityVersion") minUnityVersion: String? = null,
+                     @Query("maxAssetVersion") maxAssetVersion: String? = null, @Query("minAssetVersion") minAssetVersion: String? = null,
+                     @Query("platform") platform: String? = null): Single<List<VRChatWorld>>
+
+    /* No debugging */
+    @DELETE("1/worlds/{world_id}")
+    fun deleteWorld(@Path("world_id") world_id: String): Completable
+
+    /*
+    @GET("1/worlds/{world_id}/metadata")
+    fun getWorldMetadata()
+    */
+
+    /*
+    * ----------
+    * World API
+    *   | World Instance
+    * ----------
+    *  */
+    @GET("1/worlds/{world_id}/{instance_id}")
+    fun getWorldInstanceByID(@Path("world_id") world_id: String, @Path("instance_id") instance_id: String): Single<VRChatWorldInstance>
 }
