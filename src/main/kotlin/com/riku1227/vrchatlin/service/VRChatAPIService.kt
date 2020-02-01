@@ -70,4 +70,31 @@ interface VRChatAPIService {
 
     @GET("1/users")
     fun getUserList(@Query("search") search: String? = null, @Query("n") n: Int? = null, @Query("offset") offset: Int? = null): Single<List<VRChatUser>>
+
+    /*
+    * ----------
+    * Favorites API
+    * ----------
+    * */
+
+    @POST("1/favorites")
+    fun addFavorite(@Body vrChatFavorite: VRChatFavorite): Single<VRChatFavorite>
+
+    @GET("1/favorites/{favorite_id}")
+    fun getFavorite(@Path("favorite_id") favorite_id: String): Single<VRChatFavorite>
+
+    @GET("1/favorites")
+    fun getFavoriteList(@Query("type") type: String? = null): Single<List<VRChatFavorite>>
+
+    @GET("1/auth/user/friends/favorite")
+    fun getFavoriteFriendList(@Query("tag") tag: String? = null): Single<List<VRChatUser>>
+
+    @GET("1/worlds/favorites")
+    fun getFavoriteWorldList(@Query("tag") tag: String? = null): Single<List<VRChatWorld>>
+
+    @GET("1/avatars/favorites")
+    fun getFavoriteAvatarList(/* @Query("tag") tag: String? = null */): Single<List<VRChatAvatar>>
+
+    @DELETE("1/favorites/{favorite_id}")
+    fun deleteFavorite(@Path("favorite_id") favorite_id: String): Completable
 }
