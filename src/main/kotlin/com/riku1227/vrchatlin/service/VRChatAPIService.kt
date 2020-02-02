@@ -135,4 +135,35 @@ interface VRChatAPIService {
     *  */
     @GET("1/worlds/{world_id}/{instance_id}")
     fun getWorldInstanceByID(@Path("world_id") world_id: String, @Path("instance_id") instance_id: String): Single<VRChatWorldInstance>
+
+    /*
+    * ----------
+    * Avatar API
+    * ----------
+    * */
+
+    @GET("1/avatars/{avatar_id}")
+    fun getAvatarByID(@Path("avatar_id") avatar_id: String): Single<VRChatAvatar>
+
+    @GET("1/avatars")
+    fun getAvatarList(@Query("user") user: String? = null, @Query("featured") featured: Boolean? = null, @Query("tag") tag: String? = null,
+                      @Query("search") search: String? = null, @Query("n") n: Int? = null, @Query("offset") offset: Int? = null,
+                      @Query("order") order: String? = null, @Query("releaseStatus") releaseStatus: String? = null, @Query("sort") sort: String? = null,
+                      @Query("maxUnityVersion") maxUnityVersion: String? = null, @Query("minUnityVersion") minUnityVersion: String? = null,
+                      @Query("maxAssetVersion") maxAssetVersion: String? = null, @Query("minAssetVersion") minAssetVersion: String? = null,
+                      @Query("platform") platform: String? = null): Single<List<VRChatAvatar>>
+
+    @GET("1/avatars?user=me&releaseStatus=all")
+    fun getAvatarMyList(@Query("featured") featured: Boolean? = null, @Query("tag") tag: String? = null,
+                      @Query("search") search: String? = null, @Query("n") n: Int? = null, @Query("offset") offset: Int? = null,
+                      @Query("order") order: String? = null, @Query("sort") sort: String? = null,
+                      @Query("maxUnityVersion") maxUnityVersion: String? = null, @Query("minUnityVersion") minUnityVersion: String? = null,
+                      @Query("maxAssetVersion") maxAssetVersion: String? = null, @Query("minAssetVersion") minAssetVersion: String? = null,
+                      @Query("platform") platform: String? = null): Single<List<VRChatAvatar>>
+
+    @PUT("1/avatars/{avatar_id}/select")
+    fun chooseAvatar(@Path("avatar_id") avatar_id: String): Single<VRChatUser>
+
+    @DELETE("1/avatars/{avatar_id}")
+    fun deleteAvatar(@Path("avatar_id") avatar_id: String): Single<VRChatAvatar>
 }
