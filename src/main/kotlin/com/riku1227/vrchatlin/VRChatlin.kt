@@ -23,32 +23,25 @@ class VRChatlin(private val context: Context) {
         }
     }
 
-    private var preferences: SharedPreferences? = null
     private var vrChatAPIService: VRChatAPIService? = null
     private val moshi = Moshi.Builder()
                             .add(KotlinJsonAdapterFactory())
                             .build()
 
-    fun setSharedPreferences(sharedPreferences: SharedPreferences) {
-        preferences = sharedPreferences
-    }
-
     fun getMoshi(): Moshi {
         return moshi
     }
 
-    fun APIService(): VRChatAPIService {
+    fun APIService(initPreferences: SharedPreferences? = null): VRChatAPIService {
         if(vrChatAPIService == null) {
-            if(preferences == null) {
-                preferences = context.getSharedPreferences("vrchat_api_cookie", Context.MODE_PRIVATE)
-            }
+            val preferences = initPreferences ?: context.getSharedPreferences("vrchat_api_cookie", Context.MODE_PRIVATE)
             val retrofit = Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(
                     OkHttpClient.Builder()
-                        .cookieJar(VRChatlinCookieJar(preferences!!))
+                        .cookieJar(VRChatlinCookieJar(preferences))
                         .build()
                 )
                 .build()
