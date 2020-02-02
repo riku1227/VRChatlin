@@ -5,10 +5,16 @@ import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl
 
-class VRChatlinCookieJar(private val preferences: SharedPreferences): CookieJar {
+class VRChatlinCookieJar(val preferences: SharedPreferences): CookieJar {
+
+    companion object {
+        const val COOKIE_AUTH = "auth"
+        const val COOKIE_API_KEY = "apiKey"
+        const val COOKIE_CFDUID = "__cfduid"
+    }
 
     private var cookieMap = mutableMapOf<String, Cookie>()
-    private val cookieNameList = listOf("__cfduid", "auth", "apiKey")
+    private val cookieNameList = listOf(COOKIE_CFDUID, COOKIE_AUTH, COOKIE_API_KEY)
 
     override fun loadForRequest(url: HttpUrl): List<Cookie> {
         val cookieList = arrayListOf<Cookie>()
@@ -39,6 +45,11 @@ class VRChatlinCookieJar(private val preferences: SharedPreferences): CookieJar 
             editor.putString(i.name, i.toString()).apply()
         }
         editor.apply()
+    }
+
+    fun setCookie(key: String, cookieStr: String) {
+        cookieMap.remove(key)
+        preferences.edit().putString(key, cookieStr).apply()
     }
 
 }
