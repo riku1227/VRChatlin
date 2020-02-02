@@ -166,4 +166,19 @@ interface VRChatAPIService {
 
     @DELETE("1/avatars/{avatar_id}")
     fun deleteAvatar(@Path("avatar_id") avatar_id: String): Single<VRChatAvatar>
+
+    /*
+    * ----------
+    * Notification API
+    * ----------
+    * */
+
+    @GET("1/auth/user/notifications")
+    fun getNotificationList(@Query("type") type: String? = null, @Query("sent") sent: Boolean? = null, @Query("after") after: String? = null): Single<List<VRChatNotification>>
+
+    @PUT("1/auth/user/notifications/{notification_id}/see")
+    fun seeNotification(@Path("notification_id") notification_id: String): Single<VRChatNotification>
+
+    @PUT("1/auth/user/notifications/{notification_id}/hide")
+    fun hideNotification(@Path("notification_id") notification_id: String): Single<VRChatNotification>
 }
