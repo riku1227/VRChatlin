@@ -7,7 +7,7 @@ OkHttpを使用しているためAndroid 5.0(API level 21)以上対応です
 ## サポートされているAPI  
 現時点では [https://vrchatapi.github.io/](https://vrchatapi.github.io/) の情報を使用しています  
 | API名 | サポートされているか | 備考 |
-| :-:| :-: | :-: |
+| :---: | :---: | :---: |
 | User API | フルサポート | |
 | Favorites API | フルサポート | |
 | World API | 一部サポート | deleteWorldのデバッグができていません /  GetWorldMetadataはサポートされていません|
