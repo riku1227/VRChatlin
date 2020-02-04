@@ -6,13 +6,15 @@ OkHttpを使用しているためAndroid 5.0(API level 21)以上対応です
 [@minSdkVersion](https://twitter.com/minSdkVersion/status/1204145130673975311)
 ## サポートされているAPI  
 現時点では [https://vrchatapi.github.io/](https://vrchatapi.github.io/) の情報を使用しています  
+  
 | API名 | サポートされているか | 備考 |
-| :---: | :---: | :---: |
+| :-------: | :----: | :---: |
 | User API | フルサポート | |
 | Favorites API | フルサポート | |
 | World API | 一部サポート | deleteWorldのデバッグができていません /  GetWorldMetadataはサポートされていません|
 | Avatar API | 一部サポート | Save Avatarはサポートされていません |
 | Notification API | フルサポート | Send Notificationは削除されています |  
+  
 他のAPIは現時点でサポートされていません
 ## 依存関係
 ``` Gradle
