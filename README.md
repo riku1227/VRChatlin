@@ -15,7 +15,26 @@ OkHttpを使用しているためAndroid 5.0(API level 21)以上対応です
 | Avatar API | 一部サポート | Save Avatarはサポートされていません |
 | Notification API | フルサポート | Send Notificationは削除されています |  
   
-他のAPIは現時点でサポートされていません
+他のAPIは現時点でサポートされていません  
+## インストール  
+jcenterで利用可能です    
+``` Gradle
+repositories {
+    jcenter()
+}
+```  
+dependenciesに下記の依存関係とともに書いてください
+``` Gradle
+implementation "com.squareup.okhttp3:okhttp:4.2.2"
+implementation "com.squareup.retrofit2:retrofit:2.6.2"
+implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
+implementation "com.squareup.retrofit2:converter-moshi:2.6.2"
+implementation "io.reactivex.rxjava2:rxjava:2.2.14"
+implementation "com.squareup.moshi:moshi:1.9.1"
+implementation "com.squareup.moshi:moshi-kotlin:1.9.1"
+
+implementation "com.riku1227:vrchatlin:1.0.0"
+```
 ## 依存関係
 ``` Gradle
 dependencies {
