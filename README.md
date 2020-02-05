@@ -34,25 +34,7 @@ implementation "com.squareup.moshi:moshi:1.9.1"
 implementation "com.squareup.moshi:moshi-kotlin:1.9.1"
 
 implementation "com.riku1227:vrchatlin:1.0.0"
-```
-## 依存関係
-``` Gradle
-dependencies {
-    implementation "com.squareup.okhttp3:okhttp:4.2.2"
-
-    implementation "com.squareup.retrofit2:retrofit:2.6.2"
-
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
-
-    implementation "com.squareup.retrofit2:converter-moshi:2.6.2"
-
-    implementation "io.reactivex.rxjava2:rxjava:2.2.14"
-
-    implementation "com.squareup.moshi:moshi:1.9.1"
-
-    implementation "com.squareup.moshi:moshi-kotlin:1.9.1"
-}
-```
+```  
 ## 使い方
 ``` kotlin
 VRChatlin.get(context)
