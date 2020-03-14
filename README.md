@@ -33,7 +33,7 @@ implementation "io.reactivex.rxjava2:rxjava:2.2.14"
 implementation "com.squareup.moshi:moshi:1.9.1"
 implementation "com.squareup.moshi:moshi-kotlin:1.9.1"
 
-implementation "com.riku1227:vrchatlin:1.0.0"
+implementation "com.riku1227:vrchatlin:1.0.1"
 ```  
 ## 使い方
 ``` kotlin
