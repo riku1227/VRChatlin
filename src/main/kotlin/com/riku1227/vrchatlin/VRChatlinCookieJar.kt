@@ -14,7 +14,7 @@ class VRChatlinCookieJar(val preferences: SharedPreferences): CookieJar {
     }
 
     private var cookieMap = mutableMapOf<String, Cookie>()
-    private val cookieNameList = listOf(COOKIE_CFDUID, COOKIE_AUTH, COOKIE_API_KEY)
+    private val cookieNameList = listOf(COOKIE_API_KEY, COOKIE_AUTH, COOKIE_CFDUID)
 
     override fun loadForRequest(url: HttpUrl): List<Cookie> {
         val cookieList = arrayListOf<Cookie>()
