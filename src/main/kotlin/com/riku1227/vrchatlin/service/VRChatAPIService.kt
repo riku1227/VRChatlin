@@ -136,6 +136,12 @@ interface VRChatAPIService {
     @GET("1/worlds/{world_id}/{instance_id}")
     fun getWorldInstanceByID(@Path("world_id") world_id: String, @Path("instance_id") instance_id: String): Single<VRChatWorldInstance>
 
+    @POST("1/instances/{location}/invite")
+    fun postInviteMe(@Path("location") location: String): Completable
+
+    @POST("1/instances/{world_id}:{instance_id}/invite")
+    fun postInviteMe(@Path("world_id") world_id: String, @Path("instance_id") instance_id: String): Completable
+
     /*
     * ----------
     * Avatar API
